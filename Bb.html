@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiggle Emoji</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #part1 {
+             background-image:url('amour.jpg');
+             background-repeat: no-repeat;
+             background-attachment:fixed;
+             background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease;
+        }
+        #part2 {
+background-image:url('img_girl.jpg');
+background-repeat: no-repeat;
+background-attachment:fixed;
+background-size: cover;
+          
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+        }
+        .wiggle {
+            
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5em;
+            animation: wiggle 0.5s infinite;
+            
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="part1">
+        <span class="wiggle" id="emoji">❤️<br>Click</span>
+    </div>
+    <div id="part2">
+        <h1>Selamat datang di bagian kedua!</h1>
+    </div>
+
+    <audio id="audio" src="lovely.mp3"></audio>
+
+    <script>
+        const emoji = document.getElementById('emoji');
+        const part1 = document.getElementById('part1');
+        const part2 = document.getElementById('part2');
+        const audio = document.getElementById('audio');
+
+        emoji.addEventListener('click', () => {
+            // Putar lagu
+            audio.play();
+
+            // Efek transisi memudar
+            part1.style.opacity = '0';
+
+            // Setelah efek transisi selesai, sembunyikan bagian pertama dan tampilkan bagian kedua
+            setTimeout(() => {
+                part1.style.display = 'none';
+                part2.style.display = 'flex';
+            }, 1000); // Waktu yang sama dengan durasi transisi
+        });
+    </script>
+
+</body>
+</html>
